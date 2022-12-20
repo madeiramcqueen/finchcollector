@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Finch
 
 # Create your views here.
@@ -17,6 +17,14 @@ class FinchList(ListView):
 class FinchCreate(CreateView):
   model = Finch
   fields = ['name', 'description', 'age']
+  success_url = '/finches/'
+
+class FinchUpdate(UpdateView):
+  model = Finch
+  fields = fields = ['name', 'description', 'age']
+
+class FinchDelete(DeleteView):
+  model = Finch
   success_url = '/finches/'
 
 def finches_detail(request, finch_id):
