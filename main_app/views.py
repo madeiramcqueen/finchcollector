@@ -16,7 +16,8 @@ class FinchList(ListView):
 
 class FinchCreate(CreateView):
   model = Finch
-  fields = '__all__'
+  fields = ['name', 'description', 'age']
+  success_url = '/finches/'
 
 def finches_detail(request, finch_id):
   finch = Finch.objects.get(id=finch_id)
